@@ -1,13 +1,13 @@
 #!/bin/bash
-# setup/start_DeepVariant.sh
+# templates/start_DeepVariant.sh
 
-echo "=== start of setup/start_DeepVariant.sh" $(date)
+echo "=== start of templates/start_DeepVariant.sh" $(date)
 
-./setup/cluster_status.sh
+./templates/cluster_status.sh
 
 echo "--- Change to DV-TrioTrain project working directory"
-cd /storage/hpc/group/UMAG_test/WORKING/jakth2/DV-TrioTrain/
+cd /mnt/pixstor/schnabelr-drii/jakth2
 
 echo $(pwd)
 
-echo "=== end of setup/start_DeepVariant.sh" $(date)
+echo "=== end of templates/start_DeepVariant.sh" $(date)
