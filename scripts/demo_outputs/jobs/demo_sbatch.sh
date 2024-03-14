@@ -15,6 +15,7 @@ echo "=== SBATCH running in: ${SLURM_SUBMIT_DIR}"
 echo "=== Memory Requested: ${SLURM_MEM_PER_NODE}"
 
 time bash /home/jakth2/templates/scripts/demo.sh 1st
+time bash /home/jakth2/templates/scripts/demo.sh 2nd
 
 sleep 30
 echo "=== SBATCH IS STILL RUNNING $(date)"
