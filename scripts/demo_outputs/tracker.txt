@@ -1,0 +1,2 @@
+SUCCESS: 1st time running demo.sh
+ERROR: 2nd time running demo.sh

@@ -1,0 +1,11 @@
+=== SBATCH start > Thu Mar 14 16:45:14 CDT 2024
+=== SBATCH running on: c006.mgmt.hellbender
+=== SBATCH running in: /home/jakth2
+=== Memory Requested: 1024
+=== demo.sh start > Thu Mar 14 16:45:14 CDT 2024
+Our 1st demo script worked!
+Our 1st demo script is still working!
+=== demo.sh end > Thu Mar 14 16:45:34 CDT 2024
+=== demo.sh start > Thu Mar 14 16:45:34 CDT 2024
+Our 2nd demo script worked!
+ERROR: Our 2nd demo script is not working
