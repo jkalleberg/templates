@@ -14,8 +14,15 @@ echo "=== SBATCH running on: $(hostname)"
 echo "=== SBATCH running in: ${SLURM_SUBMIT_DIR}"
 echo "=== Memory Requested: ${SLURM_MEM_PER_NODE}"
 
-time bash /home/jakth2/templates/scripts/demo.sh 1st
-time bash /home/jakth2/templates/scripts/demo.sh 2nd
+export SCRIPT_TYPE=demo
+export MESSAGE='running demo.sh'
+export STATUS_FILE=/home/jakth2/templates/scripts/demo_outputs/tracker.txt
+source templates/scripts/setup/helper_functions.sh 
+
+bash /home/jakth2/templates/scripts/demo.sh 1st
+capture_status "1st time ${MESSAGE}" ${STATUS_FILE} &
+bash /home/jakth2/templates/scripts/demo.sh 2nd
+capture_status "2nd time ${MESSAGE}" ${STATUS_FILE}
 
 sleep 30
 echo "=== SBATCH IS STILL RUNNING $(date)"
