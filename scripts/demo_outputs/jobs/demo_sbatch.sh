@@ -11,10 +11,10 @@
 ##-- SCIENCE GOES HERE -- ## 
 echo "=== SBATCH start > $(date)"
 echo "=== SBATCH running on: $(hostname)"
-echo "=== SBATCH running in: ${PWD}"
+echo "=== SBATCH running in: ${SLURM_SUBMIT_DIR}"
 echo "=== Memory Requested: ${SLURM_MEM_PER_NODE}"
 
-time /home/jakth2/demo.sh
+time /home/jakth2/demo.sh 1st
 
 sleep 30
 echo "=== SBATCH IS STILL RUNNING $(date)"
