@@ -15,24 +15,25 @@ done
 # First argument should be a valid path to store SLURM jobs/logs
 echo "=== output path entered | ${1}"
 
-# Create that output directory,
+# Create that output directory, if one does not exist
 # and create two directories to store SLURM jobs/logs
 # -p creates any missing parent directories as well
 
 sub_dirs=("jobs" "logs")
 
-echo "INFO: adding sub directories..."
+echo "INFO: finding default sub directories..."
 itr=0
 for dir in ${sub_dirs[@]}; do
+    new_dir="${1}/${dir}"
     itr=$((itr+1))
-    echo "INFO: creating sub dir ${itr} | ${dir}"
+    if [ ! -d $new_dir ]; then
+        echo "INFO: creating sub directory #${itr} | ${new_dir}"
+        mkdir -p $new_dir
+    else
+        echo "INFO: found existing path | ${new_dir}"
+    fi
 done
 
-if [ ! -d $1 ]; then
-    echo "INFO: creating a new directory | ${1}"
-    mkdir -p $1
-else
-    echo "INFO: found existing path | ${1}"
-fi
+
 
 echo "=== experiments.sh end > $(date)"
