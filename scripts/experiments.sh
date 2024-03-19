@@ -61,10 +61,13 @@ source templates/scripts/setup/helper_functions.sh
 
 bash /home/jakth2/templates/scripts/demo.sh 1st
 capture_status \"1st time ${MESSAGE}\" ${STATUS_FILE}
+echo \"=== SBATCH IS STILL RUNNING $(date)\"
+sleep 40
+echo \"=== SBATCH IS STILL RUNNING $(date)\"
+sleep 30
+echo \"=== SBATCH IS STILL RUNNING $(date)\"
+sleep 30
+echo \"=== SBATCH end > $(date)\"
 "
-
-echo "INFO: automated SLURM job creation"
-echo "${sbatch_header}
-${sbatch_contents}"
 
 echo "=== experiments.sh end > $(date)"
