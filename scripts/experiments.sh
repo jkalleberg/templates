@@ -74,12 +74,21 @@ echo \"=== SBATCH end > \$(date)\"
 echo "INFO: automated SLURM job creation"
 echo "${sbatch_header}
 ${sbatch_contents}"
+
+# Write the SBATCH file
+slurm_job_file="${jobs_dir}/demo_sbatch1.sh"
 if [ ! -f $slurm_job_file ]; then
     echo "INFO: creating SLURM job | ${slurm_job_file}"
     echo "${sbatch_header}${sbatch_contents}" > $slurm_job_file
 else
     echo "INFO: found existing SLURM job | ${slurm_job_file}"
 fi
+
+# # Submit the SBATCH file
+# if [ -f $slurm_job_file ]; then
+#     sbatch $slurm_job_file
+#     sleep 0.3
+# fi
 
 
 echo "=== experiments.sh end > $(date)"
