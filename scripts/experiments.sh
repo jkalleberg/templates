@@ -34,6 +34,37 @@ for dir in ${sub_dirs[@]}; do
     fi
 done
 
+# Write a SLURM SBATCH file to "jobs" dir
+jobs_dir="${1}/jobs"
+logs_dir="${1}/logs"
 
+sbatch_header="#!/bin/bash
+#SBATCH --partition=general
+#SBATCH --nodes=1
+#SBATCH --mem=1G
+#SBATCH --time=0:20:00
+#SBATCH --account=schnabelr-lab
+#SBATCH --job-name=demo_sbatch
+#SBATCH --output=${logs_dir}/%x_%j.out
+#SBATCH --mail-user=jakth2@mail.missouri.edu
+#SBATCH --mail-type=REQUEUE,FAIL,END
+echo \"=== SBATCH start > $(date)\"
+echo \"=== SBATCH running on: $(hostname)\"
+echo \"=== SBATCH running in: ${SLURM_SUBMIT_DIR}\"
+echo \"=== Memory Requested: ${SLURM_MEM_PER_NODE}\""
+
+sbatch_contents="##-- SCIENCE GOES HERE -- ##
+export SCRIPT_TYPE=demo
+export MESSAGE='running demo.sh'
+export STATUS_FILE=${logs_dir}/tracker.txt
+source templates/scripts/setup/helper_functions.sh 
+
+bash /home/jakth2/templates/scripts/demo.sh 1st
+capture_status \"1st time ${MESSAGE}\" ${STATUS_FILE}
+"
+
+echo "INFO: automated SLURM job creation"
+echo "${sbatch_header}
+${sbatch_contents}"
 
 echo "=== experiments.sh end > $(date)"
