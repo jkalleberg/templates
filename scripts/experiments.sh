@@ -84,11 +84,11 @@ else
     echo "INFO: found existing SLURM job | ${slurm_job_file}"
 fi
 
-# # Submit the SBATCH file
-# if [ -f $slurm_job_file ]; then
-#     sbatch $slurm_job_file
-#     sleep 0.3
-# fi
+# Submit the SBATCH file
+if [ -f $slurm_job_file ]; then
+    sbatch $slurm_job_file
+    sleep 0.3
+fi
 
 
 echo "=== experiments.sh end > $(date)"

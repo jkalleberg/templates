@@ -1,0 +1,12 @@
+=== SBATCH start > Tue Mar 19 12:56:01 CDT 2024
+=== SBATCH running on: c015.mgmt.hellbender
+=== SBATCH running in: /home/jakth2/templates
+=== Memory Requested: 1024
+=== demo.sh start > Tue Mar 19 12:56:01 CDT 2024
+Our 1st demo script worked!
+Our 1st demo script is still working!
+=== demo.sh end > Tue Mar 19 12:56:21 CDT 2024
+=== SBATCH IS STILL RUNNING Tue Mar 19 12:56:21 CDT 2024
+=== SBATCH IS STILL RUNNING Tue Mar 19 12:57:01 CDT 2024
+=== SBATCH IS STILL RUNNING Tue Mar 19 12:57:31 CDT 2024
+=== SBATCH end > Tue Mar 19 12:58:01 CDT 2024
