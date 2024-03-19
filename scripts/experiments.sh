@@ -71,9 +71,9 @@ sleep 30
 echo \"=== SBATCH end > \$(date)\"
 "
 
-echo "INFO: automated SLURM job creation"
-echo "${sbatch_header}
-${sbatch_contents}"
+# echo "INFO: automated SLURM job creation"
+# echo "${sbatch_header}
+# ${sbatch_contents}"
 
 # Write the SBATCH file
 slurm_job_file="${jobs_dir}/demo_sbatch1.sh"
