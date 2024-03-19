@@ -105,8 +105,8 @@ echo \"=== SBATCH end > \$(date)\"
             echo "DEMO: pretending to submit SLURM job ${job_num}-of-${total_jobs} | ${slurm_job_file}"
         else
             echo "INFO: submitting SLURM job ${job_num}-of-${total_jobs} | ${slurm_job_file}" 
-            # sbatch $slurm_job_file
-            # sleep 0.3
+            sbatch $slurm_job_file
+            sleep 0.3
         fi
     fi
 done
