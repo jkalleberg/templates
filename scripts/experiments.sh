@@ -48,10 +48,10 @@ sbatch_header="#!/bin/bash
 #SBATCH --output=${logs_dir}/%x_%j.out
 #SBATCH --mail-user=jakth2@mail.missouri.edu
 #SBATCH --mail-type=REQUEUE,FAIL,END
-echo \"=== SBATCH start > $(date)\"
-echo \"=== SBATCH running on: $(hostname)\"
-echo \"=== SBATCH running in: ${SLURM_SUBMIT_DIR}\"
-echo \"=== Memory Requested: ${SLURM_MEM_PER_NODE}\"
+echo \"=== SBATCH start > \$(date)\"
+echo \"=== SBATCH running on: \$(hostname)\"
+echo \"=== SBATCH running in: \${SLURM_SUBMIT_DIR}\"
+echo \"=== Memory Requested: \${SLURM_MEM_PER_NODE}\"
 "
 
 sbatch_contents="##-- SCIENCE GOES HERE -- ##
@@ -61,17 +61,19 @@ export STATUS_FILE=${logs_dir}/tracker.txt
 source ./scripts/setup/helper_functions.sh 
 
 bash /home/jakth2/templates/scripts/demo.sh 1st
-capture_status \"1st time ${MESSAGE}\" ${STATUS_FILE}
-echo \"=== SBATCH IS STILL RUNNING $(date)\"
+capture_status \"1st time \${MESSAGE}\" \${STATUS_FILE}
+echo \"=== SBATCH IS STILL RUNNING \$(date)\"
 sleep 40
-echo \"=== SBATCH IS STILL RUNNING $(date)\"
+echo \"=== SBATCH IS STILL RUNNING \$(date)\"
 sleep 30
-echo \"=== SBATCH IS STILL RUNNING $(date)\"
+echo \"=== SBATCH IS STILL RUNNING \$(date)\"
 sleep 30
-echo \"=== SBATCH end > $(date)\"
+echo \"=== SBATCH end > \$(date)\"
 "
 
-slurm_job_file="${jobs_dir}/demo_sbatch.sh"
+echo "INFO: automated SLURM job creation"
+echo "${sbatch_header}
+${sbatch_contents}"
 if [ ! -f $slurm_job_file ]; then
     echo "INFO: creating SLURM job | ${slurm_job_file}"
     echo "${sbatch_header}${sbatch_contents}" > $slurm_job_file
