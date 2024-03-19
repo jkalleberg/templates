@@ -51,7 +51,8 @@ sbatch_header="#!/bin/bash
 echo \"=== SBATCH start > $(date)\"
 echo \"=== SBATCH running on: $(hostname)\"
 echo \"=== SBATCH running in: ${SLURM_SUBMIT_DIR}\"
-echo \"=== Memory Requested: ${SLURM_MEM_PER_NODE}\""
+echo \"=== Memory Requested: ${SLURM_MEM_PER_NODE}\"
+"
 
 sbatch_contents="##-- SCIENCE GOES HERE -- ##
 export SCRIPT_TYPE=demo
@@ -69,5 +70,14 @@ echo \"=== SBATCH IS STILL RUNNING $(date)\"
 sleep 30
 echo \"=== SBATCH end > $(date)\"
 "
+
+slurm_job_file="${jobs_dir}/demo_sbatch.sh"
+if [ ! -f $slurm_job_file ]; then
+    echo "INFO: creating SLURM job | ${slurm_job_file}"
+    echo "${sbatch_header}${sbatch_contents}" > $slurm_job_file
+else
+    echo "INFO: found existing SLURM job | ${slurm_job_file}"
+fi
+
 
 echo "=== experiments.sh end > $(date)"
