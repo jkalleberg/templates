@@ -58,7 +58,7 @@ sbatch_contents="##-- SCIENCE GOES HERE -- ##
 export SCRIPT_TYPE=demo
 export MESSAGE='running demo.sh'
 export STATUS_FILE=${logs_dir}/tracker.txt
-source templates/scripts/setup/helper_functions.sh 
+source ./scripts/setup/helper_functions.sh 
 
 bash /home/jakth2/templates/scripts/demo.sh 1st
 capture_status \"1st time ${MESSAGE}\" ${STATUS_FILE}
