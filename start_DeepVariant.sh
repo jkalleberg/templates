@@ -6,7 +6,7 @@ echo "=== start of templates/start_DeepVariant.sh" $(date)
 ./templates/cluster_status.sh
 
 echo "--- Change to DV-TrioTrain project working directory"
-cd /mnt/pixstor/schnabelr-lab/WORKING/jakth2/DV-TrioTrain
+cd /mnt/pixstor/schnabelr-drii/WORKING/jakth2/DV-TrioTrain
 
 echo $(pwd)
 
