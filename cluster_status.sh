@@ -7,7 +7,7 @@ echo "--- My Current SLURM queue:"
 squeue -u $USER
 
 echo "--- Currently idle resources:"
-sinfo -t idle
+sinfo -t idle | grep idle
 
 echo "--- My Account Fairshare:"
 sshare -a -l -A schnabelr-lab,bac,general -u $USER
